@@ -1,61 +1,52 @@
+//====TESTS
+findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 2);
+findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 3);
+findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 4);
 
-// let str1 = 'aecbcaacbceb';
-// let k = 3;
-
-let str1 = 'aecbcaabceb';
-let k = 3;
-
-// let str1 = 'aabacadbae';
-// let k = 2;
-
-// let str1 = 'dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh';
-// let k = 2;
-
-findLongestSubstringWithUniqueCharacters(str1, k);
-
-function findLongestSubstringWithUniqueCharacters(str, k) {
-	let subStart = 0, subEnd = 1;
-	console.log("strLength:",str.length)
-	let longest = '';
-	let subStr1 = str.substring(0, 1);
-	let checkResult = isSubsetLessThanOrEqualToK(subStr1, k);
-	if (checkResult)
-		longest = subStr1;
-
-	/* if checkResult is true, then increase ending index by one, if not, 
-	increase beginning until checkResult is false
-	*/
-	while (subStart < str.length) {
-		logStates('start:');
-		subStr1 = str.substring(subStart, subEnd);
-		checkResult = isSubsetLessThanOrEqualToK(subStr1, k);
+findLongestSubstringWithUniqueCharacters('aecbcaacbceb', 3);
+findLongestSubstringWithUniqueCharacters('aecbcaabceb', 2);
+findLongestSubstringWithUniqueCharacters('aabacadbae', 2);
+findLongestSubstringWithUniqueCharacters('abacaabaa', 2);
+findLongestSubstringWithUniqueCharacters('abacaadbafaaaad', 3);
 
 
-		if (checkResult) {
-			if(subStr1.length > longest.length) longest = subStr1;
-			// longest = subStr1;
+function findLongestSubstringWithUniqueCharacters(str, n) {//(string, n unique charachters)
+
+	//Indexes for substring
+	let subStart = 0,
+		subEnd = 1;
+
+	let longestSubstring = '';
+
+	while (true) {
+		let subString = str.substring(subStart, subEnd);//get a substring
+
+		/* if the set of letters' size is less than n, increase the substring end 
+		   index, else increase sub start index */
+		if (isSubsetLessThanOrEqualToK(subString, n)) {
+
+			//keep whichever string is longer
+			if (subString.length > longestSubstring.length) {
+				longestSubstring = subString;
+			}
 			subEnd++;
-			
 		} else {
 			subStart++
 		}
-		
-		if(longest.length > str.length - subStart) break;
 
-		// if(subEnd > str.length) subEnd = str.length;
+		//	if substring of remaining characters is shorter than or equal to 
+		// 	the longestSubstring subset's length, break the loop
+		if (longestSubstring.length >= str.length - subStart) break;
 	}
 
-	console.log('The end. Longest is:', longest, "length is: ", 
-	longest.length, 'starts at: ', str.indexOf(longest, 0)  );
+	console.log(longestSubstring, '-', str.indexOf(longestSubstring, 0));
 
-	function logStates(position) {
-		console.log(position, 'sub: ' +subStr1, "| lessThanK: " + checkResult, "| longest: "+longest, '|', subStart +", " +subEnd);
-	}
+	//could return instead
+	return [longestSubstring, str.indexOf(longestSubstring, 0)];
 }
 
-function isSubsetLessThanOrEqualToK(str, k) {
+//creates a Set object, and compares its size to see if it is greater than n
+function isSubsetLessThanOrEqualToK(str, n) {
 	const newSet = new Set(str);
-	return newSet.size <= k;
+	return newSet.size <= n;
 }
-
-//press esc to split console
