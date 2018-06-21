@@ -10,7 +10,7 @@ findLongestSubstringWithUniqueCharacters('abacaabaa', 2);
 findLongestSubstringWithUniqueCharacters('abacaadbafaaaad', 3);
 
 
-function findLongestSubstringWithUniqueCharacters(str, n) {//(string, n unique charachters)
+function findLongestSubstringWithUniqueCharacters(str, n) {
 
 	//Indexes for substring
 	let subStart = 0,
