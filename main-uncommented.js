@@ -1,13 +1,15 @@
 //====TESTS
-findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 2);
-findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 3);
-findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 4);
+// findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 2);
+// findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 3);
+// findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 4);
 
-findLongestSubstringWithUniqueCharacters('aecbcaacbceb', 3);
-findLongestSubstringWithUniqueCharacters('aecbcaabceb', 2);
-findLongestSubstringWithUniqueCharacters('aabacadbae', 2);
-findLongestSubstringWithUniqueCharacters('abacaabaa', 2);
-findLongestSubstringWithUniqueCharacters('abacaadbafaaaad', 3);
+// findLongestSubstringWithUniqueCharacters('aecbcaacbceb', 3);
+// findLongestSubstringWithUniqueCharacters('aecbcaabceb', 2);
+// findLongestSubstringWithUniqueCharacters('aabacadbae', 2);
+// findLongestSubstringWithUniqueCharacters('abacaabaa', 2);
+// findLongestSubstringWithUniqueCharacters('abacaadbafaaaad', 3);
+
+findLongestSubstringWithUniqueCharacters('abcde', 2);
 
 
 function findLongestSubstringWithUniqueCharacters(str, n) {
