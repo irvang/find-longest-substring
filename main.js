@@ -2,17 +2,15 @@
 findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 2);
 findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 3);
 findLongestSubstringWithUniqueCharacters('dgfddsssdsfdffdfdfadfhheedsfdfcdfdxffdh', 4);
-
 findLongestSubstringWithUniqueCharacters('aecbcaacbceb', 3);
 findLongestSubstringWithUniqueCharacters('aecbcaabceb', 2);
 findLongestSubstringWithUniqueCharacters('aabacadbae', 2);
 findLongestSubstringWithUniqueCharacters('abacaabaa', 2);
 findLongestSubstringWithUniqueCharacters('abacaadbafaaaad', 3);
+findLongestSubstringWithUniqueCharacters('aaaaaaaa', 1);
+findLongestSubstringWithUniqueCharacters('', 0);
 
-findLongestSubstringWithUniqueCharacters('aaaaaaaa', 4);
-findLongestSubstringWithUniqueCharacters('', 4);
-
-
+//====SOLUTION
 function findLongestSubstringWithUniqueCharacters(str, n) {//(string, n unique charachters)
 
 	//Indexes for substring
@@ -21,7 +19,9 @@ function findLongestSubstringWithUniqueCharacters(str, n) {//(string, n unique c
 
 	let longestSubstring = '';
 
-	while (true) {
+	//	if substring of remaining characters is shorter than or equal to 
+	// 	the longestSubstring subset's length, break the loop
+	while (longestSubstring.length < str.length - subStart) {
 		let subString = str.substring(subStart, subEnd);//get a substring
 
 		/* if the set of letters' size is less than n, increase the substring end 
@@ -36,10 +36,6 @@ function findLongestSubstringWithUniqueCharacters(str, n) {//(string, n unique c
 		} else {
 			subStart++
 		}
-
-		//	if substring of remaining characters is shorter than or equal to 
-		// 	the longestSubstring subset's length, break the loop
-		if (longestSubstring.length >= str.length - subStart) break;
 	}
 
 	console.log(longestSubstring, '-', str.indexOf(longestSubstring, 0));
